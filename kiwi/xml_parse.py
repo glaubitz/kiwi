@@ -3,7 +3,7 @@
 
 #
 # Generated  by generateDS.py version 2.29.24.
-# Python 3.6.13 (default, Mar 10 2021, 18:30:35) [GCC]
+# Python 3.6.12 (default, Dec 02 2020, 09:44:23) [GCC]
 #
 # Command line options:
 #   ('-f', '')
@@ -4663,7 +4663,7 @@ class bootloader(GeneratedsSuper):
     provide configuration parameters for it"""
     subclass = None
     superclass = None
-    def __init__(self, name=None, console=None, serial_line=None, timeout=None, timeout_style=None, targettype=None):
+    def __init__(self, name=None, console=None, serial_line=None, timeout=None, timeout_style=None, targettype=None, grub_template=None):
         self.original_tagname_ = None
         self.name = _cast(None, name)
         self.console = _cast(None, console)
@@ -4671,6 +4671,7 @@ class bootloader(GeneratedsSuper):
         self.timeout = _cast(int, timeout)
         self.timeout_style = _cast(None, timeout_style)
         self.targettype = _cast(None, targettype)
+        self.grub_template = _cast(None, grub_template)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -4694,6 +4695,8 @@ class bootloader(GeneratedsSuper):
     def set_timeout_style(self, timeout_style): self.timeout_style = timeout_style
     def get_targettype(self): return self.targettype
     def set_targettype(self, targettype): self.targettype = targettype
+    def get_grub_template(self): return self.grub_template
+    def set_grub_template(self, grub_template): self.grub_template = grub_template
     def validate_grub_console(self, value):
         # Validate type grub_console, a restriction on xs:token.
         if value is not None and Validate_simpletypes_:
@@ -4747,6 +4750,9 @@ class bootloader(GeneratedsSuper):
         if self.targettype is not None and 'targettype' not in already_processed:
             already_processed.add('targettype')
             outfile.write(' targettype=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.targettype), input_name='targettype')), ))
+        if self.grub_template is not None and 'grub_template' not in already_processed:
+            already_processed.add('grub_template')
+            outfile.write(' grub_template=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.grub_template), input_name='grub_template')), ))
     def exportChildren(self, outfile, level, namespaceprefix_='', name_='bootloader', fromsubclass_=False, pretty_print=True):
         pass
     def build(self, node):
@@ -4791,6 +4797,10 @@ class bootloader(GeneratedsSuper):
             already_processed.add('targettype')
             self.targettype = value
             self.targettype = ' '.join(self.targettype.split())
+        value = find_attr_value_('grub_template', node)
+        if value is not None and 'grub_template' not in already_processed:
+            already_processed.add('grub_template')
+            self.grub_template = value
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         pass
 # end class bootloader
