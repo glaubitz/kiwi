@@ -48,7 +48,8 @@ class TestPackageManagerDnf:
         mock_call.assert_called_once_with(
             [
                 'dnf', '--config', '/root-dir/dnf.conf', '-y',
-                '--installroot', '/root-dir', 'install', 'vim', '@collection'
+                '--installroot', '/root-dir', '--releasever=0',
+                'install', 'vim', '@collection'
             ], ['env']
         )
 

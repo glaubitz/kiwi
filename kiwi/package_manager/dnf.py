@@ -104,7 +104,8 @@ class PackageManagerDnf(PackageManagerBase):
         dnf_command = [
             'dnf'
         ] + self.dnf_args + [
-            '--installroot', self.root_dir
+            '--installroot', self.root_dir,
+            f'--releasever={self.release_version}'
         ] + self.custom_args + [
             'install'
         ] + self.package_requests + self.collection_requests
